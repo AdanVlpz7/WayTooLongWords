@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-class Main {
+public class Main {
 
   public static String changeWord(String temp){
     String newWord;
@@ -11,14 +11,15 @@ class Main {
     return newWord;
   }
   public static void checkWords(String[] wordsArray,int length){
-    System.out.println("Checando arreglo...\n");
-    for(int i = 0; i <= length-1; i++){
-      wordsArray[i] = changeWord(wordsArray[i]);
+    //System.out.println("Checando arreglo...\n");
+    for(int i = 0; i <= length; i++){
+      if(wordsArray[i].length()>10)
+        wordsArray[i] = changeWord(wordsArray[i]);
     }    
   }
 
   public static void printWords(String[] wordsArray,int length){
-    System.out.println("Imprimiendo arreglo...\n");
+    //System.out.println("Imprimiendo arreglo...\n");
     for(int i = 0; i <= length; i++){
       System.out.println(wordsArray[i]);
     }
@@ -28,16 +29,18 @@ class Main {
     int numWords;
     String temp;
     //leer numWords;
-    System.out.println("Introduzca el numero de palabras a leer\n");
+    //System.out.println("Introduzca el numero de palabras a leer\n");
     numWords = leer.nextInt();
-    String[] wordsArray = new String[numWords];
+    String[] wordsArray = new String[numWords+1];
     //for
-    for(int i = 0; i <= (numWords-1); i++){
-      //leer un numero numWords de palabras 
+    int i = 0;
+    do{
       temp = leer.nextLine();
       //agregar las palabras a un arreglo
       wordsArray[i] = temp;
-    }
+      i++;
+    }while(i <= numWords);
+
     checkWords(wordsArray,numWords);
     printWords(wordsArray,numWords);
     //imprimir arreglo
